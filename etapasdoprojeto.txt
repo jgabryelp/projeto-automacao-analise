@@ -1,0 +1,6 @@
+1 etapa: baixar a base de dados
+2 etapa: importar a base
+3 etapa: ler e tratar a base
+4 etapa: gerar um grafico 
+5 etapa: gerar um pdf com o grafico e outras informaçoes legais
+6 etapa: enviar um email com o pdf anexado
