@@ -1,6 +1,6 @@
 #importando as bibliotecas
 import gdown 
-import pandas as pd
+import pandas as pd 
 import matplotlib.pyplot as plt
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4 
@@ -14,11 +14,11 @@ load_dotenv()
 
 
 #baixando o arquivo da base com o request pra baixar a base de dados que eu hospedei no google drive
-link = "https://drive.google.com/file/d/1bppzawcFjqZhqvvWSeaaGkYhDGDmOFJA/view?usp=drive_link" #link de compartilhamento do arquivo (contêm o ID do arquivo necessário para fazer o download com o request)
+link = "https://drive.google.com/file/d/1bppzawcFjqZhqvvWSeaaGkYhDGDmOFJA/view?usp=drive_link" #link de compartilhamento do arquivo (contém o ID do arquivo necessário para fazer o download com o request)
 
 idarquivo = link.split("/d/")[1].split("/")[0] #selecionando o id do arquivo usando a função split, que separa uma string com base em algum separador, nesse caso "/d/" e "/"
  
-linkdownload = f"https://drive.google.com/uc?id={idarquivo}" #criando o link de donwload com o ID do arquivo
+linkdownload = f"https://drive.google.com/uc?id={idarquivo}" #criando o link de download com o ID do arquivo
 
 gdown.download(linkdownload, "AmazonSaleReport.csv", quiet=False) #lendo e baixando o arquivo
 
@@ -26,7 +26,6 @@ gdown.download(linkdownload, "AmazonSaleReport.csv", quiet=False) #lendo e baixa
 
 #importando e lendo a base de dados
 basededados = pd.read_csv("AmazonSaleReport.csv")
-print(basededados)
 
 
 
@@ -39,22 +38,20 @@ def formatarparadolar(valor):
 categoriaseseusfaturamentos = basededados[["Category", "Amount"]].groupby("Category").sum() #selecionando as colunas de categoria dos produtos e valor das vendas de cada categoria 
 categoriaseseusfaturamentos = categoriaseseusfaturamentos.reset_index().sort_values("Amount", ascending=False) #tirando o index da tabela e ordenando os faturamentos do maior para o menor
 categoriaseseusfaturamentos["Amount"] = categoriaseseusfaturamentos["Amount"].apply(formatarparadolar) #aplicando a formatação para dólar
-print(categoriaseseusfaturamentos)
 
 
-cidadescommaispedidos = basededados["ship-city"].value_counts() #selecionando o nome das cidades e quantas vezes elas aparecem nas pedidos
-cidadescommaispedidos = cidadescommaispedidos.reset_index() #transformando o value counts em uma tabela comum
+cidadescommaispedidos = basededados["ship-city"].value_counts() #selecionando o nome das cidades e quantas vezes elas aparecem nos pedidos
+cidadescommaispedidos = cidadescommaispedidos.reset_index() #transformando o resultado do value_counts() em uma tabela comum
 cidadescommaispedidos = cidadescommaispedidos[:15] #selecionando as 15 cidades com maior quantidade de pedidos
-print(cidadescommaispedidos)
 
 
 evoluçaofaturamentomeses = basededados[["Date", "Amount"]] #selecionando a coluna de datas dos pedidos e valor dos pedidos
-evoluçaofaturamentomeses["Date"] = pd.to_datetime(basededados["Date"], format="%m-%d-%y") #transformando a coluna de data em um Date Object (antes era um string)
+evoluçaofaturamentomeses["Date"] = pd.to_datetime(basededados["Date"], format="%m-%d-%y") #transformando a coluna de data em um DateTime Object (antes era uma string)
 evoluçaofaturamentomeses["Month"] = evoluçaofaturamentomeses["Date"].dt.month #criando uma nova coluna para os meses
 evoluçaofaturamentomeses = evoluçaofaturamentomeses[["Month", "Amount"]] #selecionando apenas a coluna dos meses e valores dos pedidos
 
 evoluçaofaturamentomeses = evoluçaofaturamentomeses.groupby("Month").sum() #selecionando os meses sem repeti-los e seus faturamentos
-evoluçaofaturamentomeses = evoluçaofaturamentomeses.reset_index() #tirando o index da tabela 
+evoluçaofaturamentomeses = evoluçaofaturamentomeses.reset_index() #retirando o index da tabela 
 
 nomesmeses = {
     1: "Janeiro",
@@ -73,8 +70,6 @@ nomesmeses = {
 
 evoluçaofaturamentomeses["Month"] = evoluçaofaturamentomeses["Month"].map(nomesmeses) #aplicando os nomes dos meses na ordem do calendário
 
-print(evoluçaofaturamentomeses)
-
 
 
 #criando o relatório da análise
@@ -92,9 +87,9 @@ for indice, linha in evoluçaofaturamentomeses.iterrows():
 
 
 relatorio = f"""
-                        ==============================
+                        =================================
                         RELATÓRIO DE VENDAS E-COMMERCE  
-                        ==============================
+                        =================================
 
 Prezados, segue em anexo o relatório da análise das vendas com os resultados obtidos.
     
@@ -109,7 +104,6 @@ FATURAMENTO AO LONGO DOS MESES:
 {evoluçaofaturamentomesesrelatorio}
 
 """
-print(relatorio)
 
 
 
@@ -122,7 +116,7 @@ plt.title("Categorias de produtos e seus Faturamentos") #título do gráfico
 plt.xlabel("Categorias") #o que aparece na horizontal do gráfico (eixo X)
 plt.ylabel("Faturamento em Dólar") #o que aparece na vertical do gráfico (eixo Y)
 
-plt.savefig("graficocategorias.png", dpi=300) #salvando o gráfico em arquivo png
+plt.savefig("graficocategorias.png", dpi=300) #salvando o gráfico em um arquivo png
 
 plt.close() #fechando o gráfico pra economizar memória
 
@@ -137,7 +131,7 @@ plt.ylabel("Quantidade de Pedidos") #o que aparece na vertical do gráfico (eixo
 
 plt.tick_params(axis="x", rotation=90) #girando a legenda horizontal pra facilitar a visualização
 
-plt.savefig("graficoscidadespedidos.png", dpi=300) #salvando o gráfico em arquivo png
+plt.savefig("graficoscidadespedidos.png", dpi=300) #salvando o gráfico em um arquivo png
 
 plt.close() #fechando o gráfico pra economizar memória
 
@@ -152,9 +146,9 @@ plt.xlabel("Meses") #o que aparece na vertical do gráfico (eixo Y)
 
 plt.yticks(evoluçaofaturamentomeses["Amount"], evoluçaofaturamentomeses["Amount"].apply(formatarparadolar)) #formatando o faturamento para dólares
 
-plt.savefig("graficoevoluçaofaturamento.png", dpi=300) #salvando o gráfico em arquivo png
+plt.savefig("graficoevoluçaofaturamento.png", dpi=300) #salvando o gráfico em um arquivo png
 
-plt.close() #fechando o gráfico pra economizar memória
+plt.close() #fechando o gráfico para economizar memória
 
 
 
@@ -166,7 +160,7 @@ pdf.drawString(10, 820, "Quanto cada Categoria Faturou em Dólares (US$)")
 pdf.drawImage("graficocategorias.png", 20, 615, width=430, height=200)
 
 pdf.drawString(10, 600, "O Faturamento em Dólares (US$) ao longo dos Meses")
-pdf.drawImage("graficoevoluçaofaturamento.png", 20, 370, width=510, height=220)  #criando os gráficos e seus nomes no pdf
+pdf.drawImage("graficoevoluçaofaturamento.png", 20, 370, width=510, height=220)  #adicionando os gráficos e seus nomes no pdf
 
 pdf.drawString(10, 355, "As 15 Cidades com maiores quantidades de pedidos")
 pdf.drawImage("graficoscidadespedidos.png", 20, 100, width=550, height=250)
@@ -180,7 +174,7 @@ assunto = "Relatório da Análise do E-commerce" #o assunto do email
 
 corpodoemail = f"""{relatorio}""" #o conteúdo do email
 
-senha = os.getenv("senha_email") #senha do google passwords 
+senha = os.getenv("senha_email") #senha de app do Google que está guardada em um arquivo .env
 anexo = "./relatoriovendasecommerce.pdf" #o arquivo que será anexado (pdf)
 
 emailrelatorio = EmailMessage()
@@ -193,10 +187,10 @@ mime_type, _ = mimetypes.guess_type(anexo) #buscando o tipo principal do pdf
 mime_type, mime_subtype = mime_type.split("/") #buscando o sub-tipo do pdf
 
 with open(anexo, "rb") as arquivo:
-    emailrelatorio.add_attachment(arquivo.read(),maintype=mime_type,subtype=mime_subtype,filename=anexo) #adionando o pdf como anexo
+    emailrelatorio.add_attachment(arquivo.read(),maintype=mime_type,subtype=mime_subtype,filename=anexo) #adicionando o pdf como anexo
 
 with smtplib.SMTP_SSL("smtp.gmail.com", 465) as email:
-    email.login(remetente, senha)        #logando no google usando a senha criada no google passwords e enviando o email
+    email.login(remetente, senha)        #logando no google usando a senha de app criada e enviando o email
     email.send_message(emailrelatorio)
 
-print("Email Enviado")
+print("Email Enviado!")
