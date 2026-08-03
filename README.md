@@ -1,12 +1,12 @@
 # 🤖 Automação de Análise de dados, Relatório e envio de Email
 ### Sobre o projeto:
-Uma automação em Python que baixa uma base de dados com informações das vendas de um E-commerce, análisa a base, gera gráficos das análises e um relatório com informações úteis que é enviado por email.
+Uma automação em Python que baixa uma base de dados com informações das vendas de um E-commerce, analisa os dados da base, gera gráficos das análises e um relatório com informações úteis que é enviado por email.
 Base de dados utilizada: [E-Commerce Sales Dataset Kaggle](https://www.kaggle.com/datasets/thedevastator/unlock-profits-with-e-commerce-sales-data)
 <br/>
 
 ## 💻 Funcionalidades do Projeto:
-- Download automático do arquivo da base de dados hospedada em um link do google drive
-- Trata e análisa a base de dados 
+- Download automático da base de dados hospedada em um link do google drive
+- Trata e analisa a base de dados 
 - O Faturamento de cada categoria de produtos
 - As Cidades com maior quantidade de pedidos
 - O Faturamento ao longo dos meses
@@ -31,15 +31,15 @@ Base de dados utilizada: [E-Commerce Sales Dataset Kaggle](https://www.kaggle.co
 
 
 ## 🚀 Como Executar o Projeto:
-1 - crie um arquivo de texto com o formato ".env" no final (o nome do arquivo pode ser apenas ".env")
+1 - crie um arquivo de texto com o nome ".env" 
 <br/>
-2 - crie uma senha de app do google [aqui](https://myaccount.google.com/apppasswords)
+2 - crie uma senha de aplicativo do google [aqui](https://myaccount.google.com/apppasswords)
 <br/>
 3 - esse arquivo deve ter o seguinte conteúdo: senha_email=sua_senha_de_app_do_google
 <br/>
 exemplo: [arquivo.env exemplo](https://github.com/jgabryelp/projeto-automacao-analise/blob/main/exemplo.env)
 <br/>
-4 - o arquivo .env deve estar na mesma pasta do arquivo main.py por precaução (código do projeto)
+4 - o arquivo .env deve estar na mesma pasta do arquivo main.py (código do projeto)
 
 
 ## 📝 Autor:
