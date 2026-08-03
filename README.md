@@ -1,6 +1,6 @@
 # 🤖 Automação de Análise de dados, Relatório e envio de Email
 ### Sobre o projeto:
-Uma automação em Python que baixa uma base de dados com informações das vendas de um E-commerce, analisa os dados da base, gera gráficos das análises e um relatório com informações úteis que é enviado por email.
+Uma automação em Python que baixa uma base de dados com informações das vendas de um E-commerce, analisa os dados da base, gera gráficos das análises e um relatório com informações úteis que é enviado por email. <br/>
 Base de dados utilizada: [E-Commerce Sales Dataset Kaggle](https://www.kaggle.com/datasets/thedevastator/unlock-profits-with-e-commerce-sales-data)
 <br/>
 
