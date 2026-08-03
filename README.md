@@ -36,7 +36,8 @@ Base de dados utilizada: [E-Commerce Sales Dataset Kaggle](https://www.kaggle.co
 2 - crie uma senha de app do google [aqui](https://myaccount.google.com/apppasswords)
 <br/>
 3 - esse arquivo deve ter o seguinte conteúdo: senha_email=sua_senha_de_app_do_google
-exemplo: senha_email=dudh iadhi auj ahj
+<br/>
+exemplo: [arquivo.env exemplo](https://github.com/jgabryelp/projeto-automacao-analise/blob/main/exemplo.env)
 <br/>
 4 - o arquivo .env deve estar na mesma pasta do arquivo main.py por precaução (código do projeto)
 
