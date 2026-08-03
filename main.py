@@ -167,6 +167,8 @@ pdf.drawImage("graficoscidadespedidos.png", 20, 100, width=550, height=250)
 
 pdf.save() #salvando o pdf
 
+
+
 #enviando o email
 remetente = "joaoogabryelc@gmail.com" #quem vai enviar o email
 destinatario = "joaogabryelcaldeirap@gmail.com" #quem vai receber o email
