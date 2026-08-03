@@ -26,7 +26,7 @@ Base de dados utilizada: [E-Commerce Sales Dataset Kaggle](https://www.kaggle.co
 
 
 ## 🗃️ Gráficos e Email enviados:
-![image alt](https://github.com/jgabryelp/projeto-automacao-analise/blob/main/emailenviadoprojetoautomacao.png)
+![image alt](https://github.com/jgabryelp/projeto-automacao-analise/blob/main/emailenviadoautomacao.png)
 ![image alt](https://github.com/jgabryelp/projeto-automacao-analise/blob/main/graficospdfautomacao.png)
 
 
