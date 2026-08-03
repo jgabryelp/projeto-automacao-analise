@@ -35,7 +35,7 @@ Base de dados utilizada: [E-Commerce Sales Dataset Kaggle](https://www.kaggle.co
 <br/>
 2 - crie uma senha de aplicativo do google [aqui](https://myaccount.google.com/apppasswords)
 <br/>
-3 - esse arquivo deve ter o seguinte conteúdo: senha_email=sua_senha_de_app_do_google
+3 - esse arquivo deve ter o seguinte conteúdo: senha_email=sua senha de app do google
 <br/>
 exemplo: [arquivo.env exemplo](https://github.com/jgabryelp/projeto-automacao-analise/blob/main/exemplo.env)
 <br/>
